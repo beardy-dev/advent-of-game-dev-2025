@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3ktq1b5b5p3s"]
+
+[ext_resource type="Script" path="res://statControl.gd" id="1_dam0w"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rbw4g"]
+
+[sub_resource type="Theme" id="Theme_ku0cv"]
+
+[node name="StatControl" type="Control"]
+layout_direction = 2
+layout_mode = 3
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_dam0w")
+
+[node name="StatControlPanel" type="HBoxContainer" parent="."]
+material = SubResource("CanvasItemMaterial_rbw4g")
+layout_direction = 2
+layout_mode = 0
+offset_left = 2.0
+offset_right = 152.0
+offset_bottom = 50.0
+theme = SubResource("Theme_ku0cv")
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="statLabel" type="Label" parent="StatControlPanel"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "STAT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="statCurrentValue" type="Label" parent="StatControlPanel"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "15"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="statMaxValue" type="Label" parent="StatControlPanel"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "15"
+horizontal_alignment = 1
+vertical_alignment = 1
