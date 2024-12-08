@@ -1,13 +1,14 @@
+class_name MainUI
 extends Control
 
-
+var stats = ['Strength', 'Dexterity', 'Spirit', 'Wits']
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var strengthControl: StatControl = StatControl.constructor(1, "Strength");
-	strengthControl.name = "StrengthControl"
-	add_to_group("StatControls")
-	add_child(strengthControl)
+	for stat in stats:
+		var statControl = StatControl.constructor(stat)
+		add_child(statControl)
+	print('>>> MY CHILDREN: ', get_children())
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
