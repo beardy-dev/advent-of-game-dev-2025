@@ -19,3 +19,11 @@ config/icon="res://icon.svg"
 
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
+
+[gui]
+
+theme/default_font_generate_mipmaps=true
+
+[rendering]
+
+textures/default_filters/use_nearest_mipmap_filter=true

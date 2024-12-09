@@ -1,17 +1,18 @@
 class_name MainUI
-extends Control
+extends FlowContainer
 
-var stats = ['Strength', 'Dexterity', 'Spirit', 'Wits']
+var stats = ['STR', 'DEX', 'SPI', 'WIT']
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for stat in stats:
 		var statControl = StatControl.constructor(stat)
+		statControl.set_anchors_preset(Control.PRESET_CENTER)
+
 		add_child(statControl)
-	print('>>> MY CHILDREN: ', get_children())
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
