@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cb8douuben3ta"]
 
 [ext_resource type="StyleBox" uid="uid://d3t7cf67yjfb5" path="res://themes/main_theme/main_theme_style_box.tres" id="1_84p6h"]
-[ext_resource type="Script" path="res://components/statNumberChanger/statNumberChanger.gd" id="2_7trsp"]
+[ext_resource type="Script" path="res://components/statNumberChanger/script_statNumberChanger.gd" id="2_ao5vi"]
 
 [node name="StatNumberChanger" type="PanelContainer"]
 custom_minimum_size = Vector2(75, 75)
@@ -13,7 +13,7 @@ offset_bottom = -573.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("1_84p6h")
-script = ExtResource("2_7trsp")
+script = ExtResource("2_ao5vi")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2

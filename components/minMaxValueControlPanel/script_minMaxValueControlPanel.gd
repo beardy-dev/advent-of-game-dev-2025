@@ -1,31 +1,47 @@
 class_name MinMaxValueControlPanel
 extends PanelContainer
 
-const self_scene = preload("res://components/MinMaxStatControl/minMaxValueControlPanel.tscn")
-const statNumberChanger = preload("res://components/statNumberChanger/statNumberChanger.tscn")
+const self_scene = preload("res://components/minMaxValueControlPanel/minMaxValueControlPanel.tscn")
 
 var maxStatValue: int = 10
 var currentStatValue: int = 10
 
+@onready var statLabel: Label  = $HBoxContainer/StatLabel
+@onready var currentStatNumberChanger: StatNumberChanger = $HBoxContainer/CurrentValVBox/StatNumberChanger
+@onready var maxStatNumberChanger: StatNumberChanger = $HBoxContainer/MaxValVbox/StatNumberChanger
+
 # id for instance trackingS
-@export var statcontrol_id: int
+@export var id: int
 @export var statName: String = 'STAT'
 
 func _ready():
-	var currentValueChanger: StatNumberChanger = StatNumberChanger.constructor()
-	var maxValueChanger: StatNumberChanger = StatNumberChanger.constructor()
-	$HBoxContainer/CurrentValVBox.add_child(currentValueChanger)
-	$HBoxContainer/MaxValVbox.add_child(maxValueChanger)
-	$HBoxContainer/StatLabel.text = self.statName
+	statLabel.text = statName
+	currentStatNumberChanger.statValue = currentStatValue
+	currentStatNumberChanger.stat = "current"
+
+	maxStatNumberChanger.statValue = maxStatValue
+	maxStatNumberChanger.stat = "max"
+
+	currentStatNumberChanger.statValueUpdated.connect(_on_stat_value_change.bind())
+	maxStatNumberChanger.statValueUpdated.connect(_on_stat_value_change.bind())
+
+
+func _on_stat_value_change(stat, value):
+	if stat == "current":
+		currentStatValue = value
+	elif stat == "max":
+		maxStatValue = value
+
 
 
 
 # instantiates a StatControl object with a specified ID to return to other controls
-static func constructor(label: String = "Stat") -> MinMaxStatControlPanel:
+static func constructor(label: String = "Stat") -> MinMaxValueControlPanel:
 	var obj = self_scene.instantiate()
-	obj.statcontrol_id = ResourceUID.create_id()
+	print('>>> new object: ', obj)
+	obj.id = ResourceUID.create_id()
 	obj.statName = label
-	ResourceUID.add_id(obj.statcontrol_id, obj.scene_file_path)
+	ResourceUID.add_id(obj.id, obj.scene_file_path)
 	return obj
 
 
