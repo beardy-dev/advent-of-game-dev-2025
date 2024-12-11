@@ -6,7 +6,7 @@ var stats = ['STR', 'DEX', 'SPI', 'WIT']
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for stat in stats:
-		var statControl = StatControl.constructor(stat)
+		var statControl = MinMaxStatControlPanel.constructor(stat)
 		statControl.set_anchors_preset(Control.PRESET_CENTER)
 
 		add_child(statControl)

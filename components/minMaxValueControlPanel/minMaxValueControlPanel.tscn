@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3ktq1b5b5p3s"]
+
+[ext_resource type="StyleBox" uid="uid://d3t7cf67yjfb5" path="res://themes/main_theme/main_theme_style_box.tres" id="1_y5gmc"]
+[ext_resource type="Script" path="res://components/MinMaxStatControl/script_minMaxValueControlPanel.gd" id="2_a7apl"]
+
+[node name="MinMaxStatControlPanel" type="PanelContainer"]
+custom_minimum_size = Vector2(200, 75)
+layout_direction = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -376.0
+offset_bottom = -249.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_styles/panel = ExtResource("1_y5gmc")
+script = ExtResource("2_a7apl")
+statcontrol_id = null
+statName = null
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="StatLabel" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "STAT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CurrentValVBox" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer/CurrentValVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Current"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MaxValVbox" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer/MaxValVbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Max
+"
+horizontal_alignment = 1
+vertical_alignment = 1
