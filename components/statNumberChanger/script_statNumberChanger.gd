@@ -1,12 +1,17 @@
 class_name StatNumberChanger
 extends PanelContainer
 
-var statValue: int = 10
-var stat: String = "STAT"
+const self_scene = preload("res://components/statNumberChanger/statNumberChanger.tscn")
 
-@onready var incrementButton: Button = $VBoxContainer/IncrementButton
-@onready var decrementButton: Button = $VBoxContainer/DecrementButton
-@onready var statValueLabel: Label = $VBoxContainer/StatValueLabel
+var id: int
+
+var statValue: int = 10
+@export var statText: String = "STAT"
+
+@onready var incrementButton: Button = $VBoxContainer/HBoxContainer/VBoxContainer/IncrementButton
+@onready var decrementButton: Button = $VBoxContainer/HBoxContainer/VBoxContainer/DecrementButton
+@onready var statValueLabel: Label = $VBoxContainer/HBoxContainer/StatValueLabel
+@onready var titleLable: Label = $VBoxContainer/titleLabel
 
 signal statValueUpdated(updatedValue)
 
@@ -14,16 +19,24 @@ signal statValueUpdated(updatedValue)
 func _ready():
 	incrementButton.button_up.connect(_on_increment_button_up.bind())
 	decrementButton.button_up.connect(_on_decrement_button_up.bind())
+	titleLable.text = statText
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
+func _process(delta):
 	statValueLabel.text = String.num_int64(statValue)
 
 func _on_increment_button_up():
 	self.statValue += 1
-	statValueUpdated.emit(stat, statValue)
+	statValueUpdated.emit(statText, statValue)
 
 func _on_decrement_button_up():
 	self.statValue -= 1
-	statValueUpdated.emit(stat, statValue)
+	statValueUpdated.emit(statText, statValue)
+
+static func constructor(text: String, value: int) -> StatNumberChanger:
+	var obj: StatNumberChanger = self_scene.instantiate()
+	obj.id = ResourceUID.create_id()
+	obj.statText = text
+	obj.statValue = value
+	return obj

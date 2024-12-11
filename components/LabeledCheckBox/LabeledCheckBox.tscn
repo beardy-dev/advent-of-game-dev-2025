@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpm4o66bh4pt8"]
+
+[ext_resource type="StyleBox" uid="uid://d3t7cf67yjfb5" path="res://themes/main_theme/main_theme_style_box.tres" id="1_pm6yv"]
+[ext_resource type="Texture2D" uid="uid://cjeml1vfvxix8" path="res://assets/checkbox-checked.svg" id="2_daw7o"]
+[ext_resource type="Script" path="res://components/LabeledCheckBox/script_LabeledCheckBox.gd" id="2_vf364"]
+[ext_resource type="Texture2D" uid="uid://x63f3k0j5k6l" path="res://assets/checkbox-unchecked.svg" id="3_bn5p3"]
+
+[node name="LabeledCheckBox" type="PanelContainer"]
+theme_override_styles/panel = ExtResource("1_pm6yv")
+script = ExtResource("2_vf364")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="titleText" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Status"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+theme_override_icons/checked = ExtResource("2_daw7o")
+theme_override_icons/unchecked = ExtResource("3_bn5p3")
+alignment = 1
+icon_alignment = 1
+expand_icon = true

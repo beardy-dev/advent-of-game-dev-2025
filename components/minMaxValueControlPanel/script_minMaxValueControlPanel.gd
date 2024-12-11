@@ -17,10 +17,9 @@ var currentStatValue: int = 10
 func _ready():
 	statLabel.text = statName
 	currentStatNumberChanger.statValue = currentStatValue
-	currentStatNumberChanger.stat = "current"
 
 	maxStatNumberChanger.statValue = maxStatValue
-	maxStatNumberChanger.stat = "max"
+
 
 	currentStatNumberChanger.statValueUpdated.connect(_on_stat_value_change.bind())
 	maxStatNumberChanger.statValueUpdated.connect(_on_stat_value_change.bind())
@@ -34,14 +33,13 @@ func _on_stat_value_change(stat, value):
 
 
 
-
 # instantiates a StatControl object with a specified ID to return to other controls
-static func constructor(label: String = "Stat") -> MinMaxValueControlPanel:
+static func constructor(label: String = "Stat", currentVal: int = 10, maxVal: int = 10) -> MinMaxValueControlPanel:
 	var obj = self_scene.instantiate()
-	print('>>> new object: ', obj)
 	obj.id = ResourceUID.create_id()
 	obj.statName = label
-	ResourceUID.add_id(obj.id, obj.scene_file_path)
+	obj.currentStatValue = currentVal
+	obj.maxStatValue = maxVal
 	return obj
 
 

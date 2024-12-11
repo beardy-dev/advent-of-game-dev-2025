@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://components/minMaxValueControlPanel/script_minMaxValueControlPanel.gd" id="2_wt1l0"]
 
 [node name="MinMaxValueontrolPanel" type="PanelContainer"]
-custom_minimum_size = Vector2(200, 75)
+custom_minimum_size = Vector2(250, 75)
 layout_direction = 2
 anchors_preset = 8
 anchor_left = 0.5
@@ -28,7 +28,8 @@ layout_mode = 2
 
 [node name="StatLabel" type="Label" parent="HBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 1
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
 text = "STAT"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -38,28 +39,15 @@ layout_mode = 2
 size_flags_horizontal = 2
 alignment = 1
 
-[node name="currentStatValueLabel" type="Label" parent="HBoxContainer/CurrentValVBox"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 8
-text = "Current"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="StatNumberChanger" parent="HBoxContainer/CurrentValVBox" instance=ExtResource("2_3ebc2")]
 layout_mode = 2
+statText = "current"
 
 [node name="MaxValVbox" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
 alignment = 1
 
-[node name="maxStatValueLabel" type="Label" parent="HBoxContainer/MaxValVbox"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 8
-text = "Max
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="StatNumberChanger" parent="HBoxContainer/MaxValVbox" instance=ExtResource("2_3ebc2")]
 layout_mode = 2
+statText = "max"
