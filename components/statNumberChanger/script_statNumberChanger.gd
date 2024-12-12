@@ -1,8 +1,6 @@
 class_name StatNumberChanger
 extends PanelContainer
 
-const self_scene = preload("res://components/statNumberChanger/statNumberChanger.tscn")
-
 var id: int
 
 var statValue: int = 10
@@ -23,7 +21,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	statValueLabel.text = String.num_int64(statValue)
 
 func _on_increment_button_up():
@@ -33,10 +31,3 @@ func _on_increment_button_up():
 func _on_decrement_button_up():
 	self.statValue -= 1
 	statValueUpdated.emit(statText, statValue)
-
-static func constructor(text: String, value: int) -> StatNumberChanger:
-	var obj: StatNumberChanger = self_scene.instantiate()
-	obj.id = ResourceUID.create_id()
-	obj.statText = text
-	obj.statValue = value
-	return obj

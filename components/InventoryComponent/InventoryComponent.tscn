@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://p0atvmt7l3fd"]
+
+[ext_resource type="Script" path="res://components/InventoryComponent/script_InventoryComponent.gd" id="1_evvcv"]
+
+[node name="InventoryComponent" type="PanelContainer"]
+custom_minimum_size = Vector2(600, 400)
+offset_right = 800.0
+offset_bottom = 400.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_evvcv")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HeaderContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ItemTypePopUpMenu" type="PopupMenu" parent="VBoxContainer/HeaderContainer"]
+title = "Item Types"
+position = Vector2i(700, 50)
+always_on_top = true
+extend_to_title = true
+keep_title_visible = true
+allow_search = false
+item_count = 1
+item_0/text = "Weapon"
+item_0/id = 0
+
+[node name="Title" type="Label" parent="VBoxContainer/HeaderContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 32
+text = "Inventory"
+horizontal_alignment = 1
+
+[node name="AddItemButton" type="Button" parent="VBoxContainer/HeaderContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+toggle_mode = true
+
+[node name="InventoryScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="InventoryContainer" type="VBoxContainer" parent="VBoxContainer/InventoryScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3

@@ -1,6 +1,5 @@
 [gd_scene load_steps=5 format=3 uid="uid://cb8douuben3ta"]
 
-[ext_resource type="StyleBox" uid="uid://d3t7cf67yjfb5" path="res://themes/main_theme/main_theme_style_box.tres" id="1_84p6h"]
 [ext_resource type="Script" path="res://components/statNumberChanger/script_statNumberChanger.gd" id="2_ao5vi"]
 [ext_resource type="Texture2D" uid="uid://bur7vowo002by" path="res://assets/up_chevron.svg" id="3_1gw27"]
 [ext_resource type="Texture2D" uid="uid://cxonrb1l8ugmo" path="res://assets/down_chevron.svg" id="4_6qxtu"]
@@ -16,7 +15,6 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_styles/panel = ExtResource("1_84p6h")
 script = ExtResource("2_ao5vi")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]

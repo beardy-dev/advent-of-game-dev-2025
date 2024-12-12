@@ -1,10 +1,9 @@
 class_name LabeledTextField
 extends PanelContainer
 
-const self_scene = preload("res://components/LabeledTextField/LabeledTextField.tscn")
-
-var titleText: String
-var placeHolderText: String
+@export var titleText: String
+@export var placeHolderText: String
+@export var textSize: int
 var value: String
 
 var id: int
@@ -18,17 +17,13 @@ func _ready():
 	titleLabel.text = titleText
 	textBox.placeholder_text = placeHolderText
 	textBox.text = value
+
+	if textSize:
+		titleLabel.add_theme_font_size_override("font_size", textSize)
+		textBox.add_theme_font_size_override("font_size", textSize)
 	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
-
-static func constructor(title: String, placeHolder: String, text: String) -> LabeledTextField:
-	var obj: LabeledTextField = self_scene.instantiate()
-	obj.id = ResourceUID.create_id()
-	obj.titleText = title
-	obj.placeHolderText = placeHolder
-	obj.value = text
-	return obj

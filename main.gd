@@ -105,6 +105,10 @@ var sheet_config: Array[Dictionary] = [
 			"checked": true
 		}
 	},
+	{
+		"type": "Inventory",
+		"props": {}
+	}
 ]
 
 # Called when the node enters the scene tree for the first time.
@@ -121,8 +125,9 @@ func _ready():
 			obj = initLabeledTextField(field.get("props"))
 		elif field.get("type") == "LabeledCheckbox":
 			obj = initLabeledCheckbox(field.get("props"))
+		elif field.get("type") == "Inventory":
+			obj = initInventory()
 		if obj != null:
-			ResourceUID.add_id(obj.id, obj.scene_file_path)
 			add_child(obj)
 	pass
 
@@ -130,30 +135,51 @@ func initMinMaxValueControl(props: Dictionary) -> MinMaxValueControlPanel:
 	var statName: String = props.get("statName")
 	var currentStatValue: int = props.get("currentStatValue")
 	var maxStatValue: int = props.get("maxStatValue")
-	return  MinMaxValueControlPanel.constructor(statName, currentStatValue, maxStatValue)
+	var minMaxControl = load("res://components/minMaxValueControlPanel/minMaxValueControlPanel.tscn").instantiate()
+	minMaxControl.statName = statName
+	minMaxControl.currentStatValue = currentStatValue
+	minMaxControl.maxStatValue = maxStatValue
+	return  minMaxControl
 
 func initStatNumberChanger(props: Dictionary) -> StatNumberChanger:
 	var statText: String = props.get("statText")
 	var statValue: int = props.get("statValue")
-	return StatNumberChanger.constructor(statText, statValue)
-
+	var statNumberChanger: StatNumberChanger = load("res://components/statNumberChanger/statNumberChanger.tscn").instantiate()
+	statNumberChanger.statText = statText
+	statNumberChanger.statValue = statValue
+	return statNumberChanger
 
 func initOptionPicker(props:Dictionary) -> OptionPicker:
 	var titleText: String = props.get("titleText")
 	var options: Array = props.get("options")
-	return  OptionPicker.constructor(titleText, options)
+	var optionPicker: OptionPicker = load("res://components/OptionPicker/OptionPicker.tscn").instantiate()
+	optionPicker.titleText = titleText
+	optionPicker.options = options
+	return optionPicker
 
 func initLabeledTextField(props: Dictionary) -> LabeledTextField:
 	var titleText: String = props.get("titleText")
 	var placeHolderText: String = props.get("placeHolderText")
 	var value: String = props.get("value")
-	return LabeledTextField.constructor(titleText, placeHolderText, value)
+	var labeledTextField: LabeledTextField = load("res://components/LabeledTextField/LabeledTextField.tscn").instantiate()
+	labeledTextField.titleText = titleText
+	labeledTextField.placeHolderText = placeHolderText
+	labeledTextField.value = value
+	return labeledTextField
 
 func initLabeledCheckbox(props: Dictionary) -> LabeledCheckbox:
 	var titleText: String = props.get("titleText")
 	var checked: bool = props.get("checked")
-	return LabeledCheckbox.constructor(titleText, checked)
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+	var labeledTextField: LabeledCheckbox = load("res://components/LabeledCheckbox/LabeledCheckbox.tscn").instantiate()
+	labeledTextField.titleText = titleText
+	labeledTextField.checked = checked
+	return labeledTextField
+
+func initInventory():
+	var inventoryScene = load("res://components/InventoryComponent/InventoryComponent.tscn")
+	return inventoryScene.instantiate()
+
+
 func _process(_delta):
 	pass
 

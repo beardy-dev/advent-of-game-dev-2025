@@ -1,8 +1,6 @@
 class_name MinMaxValueControlPanel
 extends PanelContainer
 
-const self_scene = preload("res://components/minMaxValueControlPanel/minMaxValueControlPanel.tscn")
-
 var maxStatValue: int = 10
 var currentStatValue: int = 10
 
@@ -30,16 +28,5 @@ func _on_stat_value_change(stat, value):
 		currentStatValue = value
 	elif stat == "max":
 		maxStatValue = value
-
-
-
-# instantiates a StatControl object with a specified ID to return to other controls
-static func constructor(label: String = "Stat", currentVal: int = 10, maxVal: int = 10) -> MinMaxValueControlPanel:
-	var obj = self_scene.instantiate()
-	obj.id = ResourceUID.create_id()
-	obj.statName = label
-	obj.currentStatValue = currentVal
-	obj.maxStatValue = maxVal
-	return obj
 
 

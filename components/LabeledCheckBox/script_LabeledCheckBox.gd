@@ -1,8 +1,6 @@
 class_name LabeledCheckbox
 extends PanelContainer
 
-const self_scene = preload("res://components/LabeledCheckBox/LabeledCheckBox.tscn")
-
 var id: int
 
 var titleText: String
@@ -20,12 +18,5 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
-
-static func constructor(title: String, value: bool) -> LabeledCheckbox:
-	var obj = self_scene.instantiate()
-	obj.titleText = title
-	obj.checked = value
-	obj.id = ResourceUID.create_id()
-	return obj

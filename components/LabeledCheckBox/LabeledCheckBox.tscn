@@ -1,12 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://dpm4o66bh4pt8"]
 
-[ext_resource type="StyleBox" uid="uid://d3t7cf67yjfb5" path="res://themes/main_theme/main_theme_style_box.tres" id="1_pm6yv"]
 [ext_resource type="Texture2D" uid="uid://cjeml1vfvxix8" path="res://assets/checkbox-checked.svg" id="2_daw7o"]
 [ext_resource type="Script" path="res://components/LabeledCheckBox/script_LabeledCheckBox.gd" id="2_vf364"]
 [ext_resource type="Texture2D" uid="uid://x63f3k0j5k6l" path="res://assets/checkbox-unchecked.svg" id="3_bn5p3"]
 
 [node name="LabeledCheckBox" type="PanelContainer"]
-theme_override_styles/panel = ExtResource("1_pm6yv")
 script = ExtResource("2_vf364")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
