@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://76dhqlouj5bv"]
+[gd_scene load_steps=3 format=3 uid="uid://76dhqlouj5bv"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_1esfj"]
+[ext_resource type="PackedScene" uid="uid://p0atvmt7l3fd" path="res://components/InventoryComponent/InventoryComponent.tscn" id="2_kj4p2"]
 
 [node name="Control" type="FlowContainer"]
 anchors_preset = 15
@@ -15,3 +16,10 @@ size_flags_vertical = 6
 alignment = 1
 vertical = true
 script = ExtResource("1_1esfj")
+
+[node name="InventoryButton" type="Button" parent="."]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+text = "Inventory (I)"
+
+[node name="InventoryWindow" parent="." instance=ExtResource("2_kj4p2")]

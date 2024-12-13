@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b22haw1i81yue"]
+[gd_scene load_steps=3 format=3 uid="uid://b22haw1i81yue"]
 
 [ext_resource type="PackedScene" uid="uid://yi7uyitodo6e" path="res://components/OptionPicker/OptionPicker.tscn" id="1_0xhmg"]
 [ext_resource type="PackedScene" uid="uid://jgpicb83tm8y" path="res://components/LabeledTextField/LabeledTextField.tscn" id="2_gka02"]

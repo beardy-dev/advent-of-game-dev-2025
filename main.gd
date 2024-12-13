@@ -1,6 +1,9 @@
 class_name MainUI
 extends FlowContainer
 
+@onready var inventory_window: InventoryComponent = $InventoryWindow
+@onready var inventory_button: Button = $InventoryButton
+
 var sheet_config: Array[Dictionary] = [
 	{
 		"type": "MinMaxValueControlPanel",
@@ -129,7 +132,18 @@ func _ready():
 			obj = initInventory()
 		if obj != null:
 			add_child(obj)
-	pass
+	
+	# Connect inventory button
+	inventory_button.pressed.connect(_on_inventory_button_pressed)
+
+func _on_inventory_button_pressed():
+	_toggle_inventory()
+
+func _toggle_inventory():
+	if inventory_window.visible:
+		inventory_window.hide_window()
+	else:
+		inventory_window.show_window()
 
 func initMinMaxValueControl(props: Dictionary) -> MinMaxValueControlPanel:
 	var statName: String = props.get("statName")
@@ -179,7 +193,5 @@ func initInventory():
 	var inventoryScene = load("res://components/InventoryComponent/InventoryComponent.tscn")
 	return inventoryScene.instantiate()
 
-
 func _process(_delta):
 	pass
-

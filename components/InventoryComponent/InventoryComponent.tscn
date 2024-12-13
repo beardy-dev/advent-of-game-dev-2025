@@ -3,22 +3,29 @@
 [ext_resource type="Script" path="res://components/InventoryComponent/script_InventoryComponent.gd" id="1_evvcv"]
 [ext_resource type="Texture2D" uid="uid://d1efxqmg2c8rm" path="res://assets/add-icon.svg" id="2_emyil"]
 
-[node name="InventoryComponent" type="PanelContainer"]
-custom_minimum_size = Vector2(600, 400)
-offset_right = 800.0
-offset_bottom = 400.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="InventoryWindow" type="Window"]
+title = "Inventory"
+initial_position = 2
+size = Vector2i(600, 400)
+visible = false
+transient = true
 script = ExtResource("1_evvcv")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
 
-[node name="HeaderContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HeaderContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="ItemTypePopUpMenu" type="PopupMenu" parent="VBoxContainer/HeaderContainer"]
+[node name="ItemTypePopUpMenu" type="PopupMenu" parent="PanelContainer/VBoxContainer/HeaderContainer"]
 title = "Item Types"
 position = Vector2i(700, 50)
 always_on_top = true
@@ -29,7 +36,7 @@ item_count = 1
 item_0/text = "Weapon"
 item_0/id = 0
 
-[node name="Title" type="Label" parent="VBoxContainer/HeaderContainer"]
+[node name="Title" type="Label" parent="PanelContainer/VBoxContainer/HeaderContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -37,7 +44,7 @@ theme_override_font_sizes/font_size = 32
 text = "Inventory"
 horizontal_alignment = 1
 
-[node name="AddItemButton" type="Button" parent="VBoxContainer/HeaderContainer"]
+[node name="AddItemButton" type="Button" parent="PanelContainer/VBoxContainer/HeaderContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -47,11 +54,11 @@ icon = ExtResource("2_emyil")
 icon_alignment = 1
 expand_icon = true
 
-[node name="InventoryScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+[node name="InventoryScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="InventoryContainer" type="VBoxContainer" parent="VBoxContainer/InventoryScrollContainer"]
+[node name="InventoryContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/InventoryScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
