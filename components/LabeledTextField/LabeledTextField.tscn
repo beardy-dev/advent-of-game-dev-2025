@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://jgpicb83tm8y"]
+[gd_scene load_steps=2 format=3 uid="uid://jgpicb83tm8y"]
 
 [ext_resource type="Script" path="res://components/LabeledTextField/script_LabeledTextField.gd" id="2_yb1wd"]
 
@@ -13,7 +13,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 32
-text = "Name"
+text = "Label Text"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -21,7 +21,6 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 32
-text = "Toke The Warrior"
+placeholder_text = "Text goes here"
 alignment = 1
-max_length = 20
 expand_to_text_length = true
