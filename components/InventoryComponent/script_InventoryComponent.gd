@@ -31,4 +31,5 @@ func _on_close_requested():
 func _on_add_item_button_press():
 	var genericItemScene = load("res://components/InventoryComponent/ItemComponents/GenericItemComponent/GenericItemComponent.tscn")
 	inventory.add_child(genericItemScene.instantiate())
+	print(">>> item added: ", inventory.get_child_count(), " - ", inventory.get_children())
 
